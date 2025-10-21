@@ -1,0 +1,1 @@
+export const PASSWORD_REGEX_ERROR = 'password must contain at least 8 character, one uppercase character, one lowercase character, one special character and one number'

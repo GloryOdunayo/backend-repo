@@ -1,0 +1,34 @@
+[
+    {
+        "name": "superadmin",
+        "description": "Superadmin has all right to the system"
+    },
+    {
+        "name": "admin",
+        "description":"Admin has limited right to the system"
+    },
+    {
+        "name": "vendor",
+        "description" : "Vendor has vendor right to the system"
+    },
+    {
+        "name": "customer",
+        "description":"Customer has customer right to the system"
+    },
+    {
+        "name": "user",
+        "description" :"User has user right to the system"
+    },
+    {
+        "name": "staff",
+        "description":"Staff has staff right to the system"
+    },
+    {
+        "name": "guest",
+        "description":"Guest has guest right to the system"
+    },
+    {
+        "name": "delivery",
+        "description": "Delivery has delivery right to the system"
+    }
+]

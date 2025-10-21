@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- GOOGLE FONT (POPPINS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Verify Email</title>
+  </head>
+  <body
+    style="padding: 50px auto 50px; font-family: poppins; background: #e8e1f2"
+  >
+    <table
+      style="
+        padding: 50px auto 50px;
+        font-family: poppins;
+        margin: 0 auto 0;
+        background: #e8e1f2;
+      "
+    >
+      <tr>
+        <td
+          style="
+            padding: 50px auto 50px;
+            font-family: poppins;
+            background: #e8e1f2;
+            width: 100%;
+            margin: 0px auto 0px;
+          "
+        >
+          <!-- HEADER SECTION STARTS -->
+          <table
+            style="
+              height: 120px;
+              background-color: #ffffff;
+              text-align: center;
+              border-radius: 20px 20px 0 0;
+              width: 600px;
+              padding: 40px 0 0;
+              margin: 70px auto 0px;
+            "
+          >
+            <tr>
+              <td>
+                <img src="./logo.png" alt="" width="20%" />
+              </td>
+            </tr>
+          </table>
+
+          <table
+            align="center"
+            style="
+              background-color: #fff;
+              text-align: center;
+              border-radius: 0 0 20px 20px;
+              width: 600px;
+              margin: 0px auto 0px;
+              padding: 0px 30px;
+            "
+          >
+          <!-- Email Title -->
+          <tr>
+            <td
+              style="
+                font-weight: 600;
+                font-size: 1.2rem;
+                color: #404040;
+                padding-top: 40px;
+                padding-bottom: 0px;
+                text-align: left;
+              "
+            >
+              <%= emailTitle %>,
+            </td>
+          </tr>
+            <!-- HEADER SECTION ENDS -->
+
+            <!-- CONTENT SECTION STARTS -->
+
+            <!-- CONTENT BODY STARTS -->
+            <tr>
+              <td
+                style="
+                  font-weight: 600;
+                  font-size: 1.2rem;
+                  color: #404040;
+                  padding-top: 40px;
+                  padding-bottom: 0px;
+                  text-align: left;
+                "
+              >
+                Dear <%= emailSalute %>,
+              </td>
+            </tr>
+            <tr style="text-align: left; color: #505356">
+              <td style="padding: 0 0px">
+                <p
+                  style="
+                    margin: 5px auto 30px;
+                    font-size: 1rem;
+                    text-align: left;
+                  "
+                >
+                  Thank you for signing up on awaHealth! To complete your
+                  registration and start exploring our platform, we need you to
+                  verify your email address.
+                </p>
+              </td>
+            </tr>
+
+            <!-- CONTENT BUTTON STARTS -->
+            <tr style="text-align: center; color: #4f4f4f">
+              <td style="text-align: left">
+                <p
+                  style="
+                    margin: 5px auto 20px;
+                    font-size: 1rem;
+                    text-align: left;
+                    font-weight: 600;
+                  "
+                >
+                  Please verify your email by clicking the link below:
+                </p>
+                <a href="<%= buttonUrl %>"
+                  style="
+                    background: #03045e;
+                    color: #fff;
+                    border-radius: 7px;
+                    padding: 16px 35px;
+                    border: 0;
+                    font-weight: 600;
+                    cursor: pointer;
+                    margin: 0px auto 20px;
+                    box-shadow: 0px 2px 12px rgba(51, 51, 51, 0.1);
+                    font-size: 1rem;
+                  "
+                >
+                <%= buttonText %>
+                </a>
+              </td>
+            </tr>
+            <!-- CONTENT BUTTON ENDS -->
+
+            <tr style="text-align: left; color: #505356">
+              <td style="padding: 15px 0px 10px">
+                <p
+                  style="
+                    margin: 0px auto 40px;
+                    font-size: 1rem;
+                    text-align: left;
+                  "
+                >
+                  Verification link expires in 10 minutes. You will need to
+                  request a new link after expiration.
+                </p>
+              </td>
+            </tr>
+            <!--CONTENT BODY ENDS  -->
+          </table>
+          <!-- CONTENT SECTION ENDS -->
+
+          <!-- FOOTER SECTION STARTS -->
+          <table
+            style="
+              background: #03045e;
+              text-align: center;
+              border-radius: 20px;
+              margin: 15px auto 70px;
+              color: #fff;
+              cursor: pointer;
+              width: 100%;
+              padding: 30px;
+            "
+          >
+            <tr>
+              <td
+                style="
+                  text-align: left;
+                  background: transparent;
+                  border-radius: 0px 0px 10px 10px;
+                "
+              >
+                <span
+                  ><a
+                    href="https://awahealth-client.onrender.com"
+                    style="
+                      padding: 5px 5px 5px 0px;
+                      border: 0;
+                      font-weight: 500;
+                      cursor: pointer;
+                      margin: 0px auto 45px;
+                      text-decoration: none;
+                      color: #ffffff;
+                    "
+                    >&copy; awaHealth Team</a
+                  ></span
+                >
+                <span style="margin: 10px auto 10px; font-size: 1rem">
+                  All rights reserved.
+                </span>
+              </td>
+              <td style="text-align: right; padding-top: 5px">
+                <span
+                  ><a
+                    href="/"
+                    style="
+                      padding: 5px 5px;
+                      border: 0;
+                      font-weight: 700;
+                      cursor: pointer;
+                      margin: 0px auto 45px;
+                      text-decoration: none;
+                      color: #ffffff;
+                    "
+                  >
+                    <img src="./facebook.png" alt="" width="20rem" /> </a
+                ></span>
+                <span
+                  ><a
+                    href="/"
+                    style="
+                      padding: 5px 5px;
+                      border: 0;
+                      font-weight: 700;
+                      cursor: pointer;
+                      margin: 0px auto 45px;
+                      text-decoration: none;
+                      color: #ffffff;
+                    "
+                  >
+                    <img src="./instagram.png" alt="" width="20rem" />
+                  </a>
+                </span>
+                <span
+                  ><a
+                    href="/"
+                    style="
+                      padding: 5px 5px;
+                      border: 0;
+                      font-weight: 700;
+                      cursor: pointer;
+                      margin: 0px auto 45px;
+                      text-decoration: none;
+                      color: #ffffff;
+                    "
+                  >
+                    <img src="./twitter.png" alt="" width="20rem" /> </a
+                ></span>
+              </td>
+            </tr>
+            <!-- FOOTER SOCIAL MEDIA LINKS ENDS -->
+          </table>
+          <!-- FOOTER SECTION ENDS -->
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

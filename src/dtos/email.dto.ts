@@ -1,0 +1,55 @@
+import { EmailDriver } from "../utils/types.util";
+
+export interface sendEmailWithSGDTO {
+  engine: string,
+  email: string,
+  emailTitle: string,
+  fromEmail: string,
+  fromName: string,
+  template: string,
+  preheaderText: string,
+  emailSalute: string,
+  contentOne?: string,
+  contentTwo?: string,
+  contentThree?: string,
+  code?: string,
+  buttonText?: string,
+  buttonUrl?: string,
+  replyTo?: string,
+}
+export interface sendWithZeptoDTO {
+  engine: string,
+  email: string,
+  emailTitle: string,
+  fromEmail: string,
+  fromName: string,
+  template: string,
+  preheaderText: string,
+  emailSalute: string,
+  contentOne?: string,
+  contentTwo?: string,
+  contentThree?: string,
+  code?: string,
+  buttonText?: string,
+  buttonUrl?: string,
+  replyTo?: string,
+}
+
+export interface sendEmailDTO {
+  email: string,
+  title: string,
+  driver: EmailDriver,
+  template?: string,
+  fromName?: string,
+  preheader?: string,
+  replyTo?: string,
+  options: {
+    salute?: string,
+    contentOne?: string,
+    contentTwo?: string,
+    contentThree?: string,
+    code?: string,
+    buttonText?: string,
+    buttonUrl?: string,
+  },
+}
