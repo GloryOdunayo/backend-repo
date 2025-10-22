@@ -1,4 +1,4 @@
-import { LogType, ProviderType } from "../utils/types.util"
+import { LogType, ProviderType } from "../utils/types.util";
 
 export interface LoggerDTO{
     type?: LogType,

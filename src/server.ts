@@ -14,6 +14,9 @@ const init = async (): Promise<void> => {
   // seed data to db if available
   await seedData();
 
+  // maximum listeners for process
+  process.setMaxListeners(20);
+
   // start queue workers
   startWorkers();
 }

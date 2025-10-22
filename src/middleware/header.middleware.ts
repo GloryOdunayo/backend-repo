@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import ErrorResponse from "../utils/error.util";
+import ENV from "../utils/env.util";
 
 declare global {
     namespace Express {
@@ -11,7 +12,7 @@ declare global {
 }
 
 const validateChannels = async(req: Request, res: Response, next: NextFunction) => {
-    const APP_CHANNELS = process.env.APP_CHANNEL || "";
+    const APP_CHANNELS = ENV.APP_CHANNELS;
     const LG = req.headers.lg?.toString().trim().toLowerCase();
     const CH = req.headers.ch?.toString().trim().toLowerCase();
 

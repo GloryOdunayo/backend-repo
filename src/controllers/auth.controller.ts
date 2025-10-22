@@ -12,6 +12,8 @@ import User from "../models/User.model";
 import UserRepository from "../repositories/user.repository";
 import { ObjectId } from "mongoose";
 import AuthMapper from "../mappers/auth.mapper";
+import { addJob } from "../queues/jobs/jobs.job";
+import { JobChannel, QueueChannel } from "../queues/channel.queue";
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password, userType, callbackUrl, verifyType } = <RegisterDTO>req.body;
@@ -120,8 +122,6 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 const login = async (req: Request, res: Response, next: NextFunction) => {
   const {email, password, method, hash} = <LoginDTO>req.body
 
-  await console.log(req.language, req.channel, 'request headers')
-
   const validate = await AuthService.validateLogin(req.body, req.channel!);
 
   if (validate.error) {
@@ -160,6 +160,11 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 
   if(user.isLocked){
+    addJob({
+      jobName: JobChannel.UnlockUsers,
+      queueName: QueueChannel.UnlockUsers,
+      data: { },
+    })
     return next(
       new ErrorResponse(
         "Error",

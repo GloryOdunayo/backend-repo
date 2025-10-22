@@ -1,5 +1,6 @@
 import Bull, { Queue, QueueOptions, Job, DoneCallback } from "bull";
 import { AddQueueJobDTO, CreateQueueDTO, CreateWorkerDTO, JobDataDTO } from "../dtos/queue.dto";
+import ENV from "../utils/env.util";
 
 class BullQueue {
     private queues: Map<string, Queue> = new Map();
@@ -24,10 +25,10 @@ class BullQueue {
         }
         
 
-        this.HOST = process.env.REDIS_HOST;
-        this.PORT = process.env.REDIS_PORT;
-        this.USER = process.env.REDIS_USER;
-        this.PASSWORD = process.env.REDIS_PASSWORD;
+        this.HOST = ENV.REDIS_HOST;
+        this.PORT = ENV.REDIS_PORT;
+        this.USER =ENV.REDIS_USER;
+        this.PASSWORD = ENV.REDIS_PASSWORD;
     }
 
     /**

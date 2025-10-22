@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import mongoose, { Model, ObjectId, Schema } from "mongoose";
-import slugify from "slugify";
+const slugify = require("slugify");
 import bcrypt from "bcryptjs";
 import Role from "./Role.model";
 import { IUserDoc } from "../utils/interfaces.util";
