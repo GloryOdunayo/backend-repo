@@ -44,10 +44,10 @@ class BullQueue {
 
         const options: QueueOptions = {
             redis: {
-                tls: {
-                    rejectUnauthorized: false,
-                    minVersion: 'TLSv1.2'
-                },
+                // tls: {
+                //     rejectUnauthorized: false,
+                //     minVersion: 'TLSv1.2'
+                // },
                 maxRetriesPerRequest: null,
                 enableReadyCheck: false,
                 connectTimeout: 80000,

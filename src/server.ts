@@ -2,11 +2,20 @@ import colors from "colors";
 import seedData from "./config/seeds/seeder.seed";
 import app from "./config/app.config";
 import connectDB from "./config/db.config";
+import { startWorkers } from "./queues/worker.queue";
 
 const init = async (): Promise<void> => {
+  // connect database
   await connectDB();
 
+  // log heap stats
+
+
+  // seed data to db if available
   await seedData();
+
+  // start queue workers
+  startWorkers();
 }
 
 init();

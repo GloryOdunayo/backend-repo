@@ -15,7 +15,7 @@ class ENV {
     public API_ROUTE: string;
     public LOGS_PATH: string;
     public APP_CHANNELS: string;
-    public MONGODB_URI: string;
+    public MONGO_URI: string;
     public REDIS_HOST: string;
     public REDIS_PORT: string;
     public REDIS_USER: string;
@@ -56,8 +56,8 @@ class ENV {
             throw new Error('APP_CHANNELS is not defined')
         }
 
-        if (!process.env.MONGODB_URI) {
-            throw new Error('MONGODB_URI is not defined')
+        if (!process.env.MONGO_URI) {
+            throw new Error('MONGO_URI is not defined')
         }
 
         if (!process.env.REDIS_HOST) {
@@ -133,7 +133,7 @@ class ENV {
         this.PORT = process.env.PORT;
         this.API_ROUTE = process.env.API_ROUTE;
         this.APP_CHANNELS = process.env.APP_CHANNELS;
-        this.MONGODB_URI = process.env.MONGODB_URI;
+        this.MONGO_URI = process.env.MONGO_URI;
         this.REDIS_HOST = process.env.REDIS_HOST;
         this.REDIS_PORT = process.env.REDIS_PORT;
         this.REDIS_USER = process.env.REDIS_USER;

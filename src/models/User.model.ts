@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import Role from "./Role.model";
 import { IUserDoc } from "../utils/interfaces.util";
 import SystemService from '../services/system.service';
-import { LoginMethod } from '../utils/enums.util';
+import { LoginMethodEnum } from '../utils/enums.util';
 
 const UserSchema = new Schema<IUserDoc>(
   {
@@ -50,7 +50,7 @@ const UserSchema = new Schema<IUserDoc>(
       type: mongoose.Schema.Types.Mixed,
       default: null,
     },
-    method: { type: String, default: LoginMethod.EMAIL, enum : SystemService.enumToArray(LoginMethod, 'values-only') },
+    method: { type: String, default: LoginMethodEnum.EMAIL, enum : SystemService.enumToArray(LoginMethodEnum, 'values-only') },
     limit: { type: Number, default: 0 },
   },
 
