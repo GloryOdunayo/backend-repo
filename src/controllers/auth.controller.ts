@@ -12,10 +12,10 @@ import User from "../models/User.model";
 import UserRepository from "../repositories/user.repository";
 import { ObjectId } from "mongoose";
 import AuthMapper from "../mappers/auth.mapper";
-import { addJob } from "../queues/jobs/jobs.job";
-import { JobChannel, QueueChannel } from "../queues/channel.queue";
+import CronWorker from "../crontab/worker.cron";
+import { asyncHandler } from "../utils/helpers.util";
 
-const register = async (req: Request, res: Response, next: NextFunction) => {
+const register = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   const { email, password, userType, callbackUrl, verifyType } = <RegisterDTO>req.body;
 
   const validate = await AuthService.validateRegister(req.body);
@@ -117,9 +117,9 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
     message: "successful",
     status: 200,
   });
-};
+});
 
-const login = async (req: Request, res: Response, next: NextFunction) => {
+const login = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   const {email, password, method, hash} = <LoginDTO>req.body
 
   const validate = await AuthService.validateLogin(req.body, req.channel!);
@@ -160,11 +160,6 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 
   if(user.isLocked){
-    addJob({
-      jobName: JobChannel.UnlockUsers,
-      queueName: QueueChannel.UnlockUsers,
-      data: { },
-    })
     return next(
       new ErrorResponse(
         "Error",
@@ -175,7 +170,8 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     );
   }
 
-  
+  const cronWorker = new CronWorker();
+
   if(!user.isSuper){
     if(method === LoginMethodEnum.EMAIL){
       const isMatched = await user.matchPassword(password);
@@ -269,9 +265,9 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 
     sendTokenResponse(user._id, res)
   }
-}
+})
 
-const activateAccount = async (
+const activateAccount = asyncHandler(async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -335,7 +331,7 @@ const activateAccount = async (
     message: "successful",
     status: 200,
   });
-};
+});
 
 export { register, activateAccount, login };
 
