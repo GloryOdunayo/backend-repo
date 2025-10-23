@@ -1,5 +1,4 @@
 import { DoneCallback, Job } from "bull";
-import { JobDataDTO } from "../../dtos/queue.dto";
 import User from "../../models/User.model";
 
 const unlockUsersAccountJob = async (job: Job, done: DoneCallback) => {
@@ -25,7 +24,7 @@ const unlockUsersAccountJob = async (job: Job, done: DoneCallback) => {
         //     await user.save();
         // }
     } catch (err) {
-        
+        console.log(err)
     }
 }
 

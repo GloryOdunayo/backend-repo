@@ -3,6 +3,7 @@ import seedData from "./config/seeds/seeder.seed";
 import app from "./config/app.config";
 import connectDB from "./config/db.config";
 import { startWorkers } from "./queues/worker.queue";
+import { unlockUsersCron } from "./crontab/user.cron";
 
 const init = async (): Promise<void> => {
   // connect database
@@ -19,6 +20,11 @@ const init = async (): Promise<void> => {
 
   // start queue workers
   startWorkers();
+
+  // start cron jobs automatically
+  // run every second of every 30th min, of every hour of every day of every month, of every month of every day of the week
+  // second , 30 minutes, hour, 1-31, jan-dec, sun-sat 
+  unlockUsersCron("* */30 * * * *"); // every 30 minutes
 }
 
 init();

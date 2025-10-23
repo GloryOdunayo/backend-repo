@@ -1,6 +1,7 @@
 import Bull, { Queue, QueueOptions, Job, DoneCallback } from "bull";
 import { AddQueueJobDTO, CreateQueueDTO, CreateWorkerDTO, JobDataDTO } from "../dtos/queue.dto";
 import ENV from "../utils/env.util";
+import logger from "../utils/logger.util";
 
 class BullQueue {
     private queues: Map<string, Queue> = new Map();
@@ -89,15 +90,15 @@ class BullQueue {
 
         // completed
         queue.on('completed', (job)=>{
-            console.log(`job with the id: ${job.id} is completed`)
+            logger.info(`job with the id: ${job.id} is completed`)
         })
         // failed
         queue.on('failed', (job, err)=>{
-            console.log(`job with the id: ${job.id} failed for queue: ${job.name} with error: ${err.message}`)
+            logger.error(`job with the id: ${job.id} failed for queue: ${job.name} with error: ${err.message}`)
         })
         // error
         queue.on('error', (err)=>{
-            console.log(`job with the name: ${queue.name} experience error: ${err.message}`)
+            logger.error(`job with the name: ${queue.name} experience error: ${err.message}`)
         })
 
         return queue;
@@ -124,7 +125,7 @@ class BullQueue {
 
         // logs add jobs
         const jobIds= bullJobs.map(job => job.opts?.jobId || "N/A").join(", ");
-        console.log(`Added ${jobIds.length} jobs to queue ${queue.name}. Jobs Id: ${jobIds}`)
+        logger.info(`Added ${jobIds.length} jobs to queue ${queue.name}. Jobs Id: ${jobIds}`);
     }
 
     /**

@@ -39,7 +39,6 @@ const validateChannels = async(req: Request, res: Response, next: NextFunction) 
     req.language = LG;
     req.channel = CH;
 
-    console.log(req.headers, 'Headers');
     return next();
 }
 
